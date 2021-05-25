@@ -46,6 +46,7 @@
       "project": "./tsconfig.json"
     },
     "rules": {
+      "no-console": "off",
       "import/no-unresolved": "off",
       "import/extensions": "off",
       "@typescript-eslint/explicit-module-boundary-types": "off",
