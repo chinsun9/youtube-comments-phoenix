@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import Header from './components/Header';
 import Comment from './components/Comment';
+import { useCommentState } from './context/GlobalContext';
 
 const Main = styled.div`
   min-height: 100vh;
@@ -12,26 +13,29 @@ const Main = styled.div`
     max-width: 900px;
     margin: auto;
   }
+
+  .contents {
+    .commentThread {
+      margin-bottom: 16px;
+    }
+  }
 `;
 
 function App() {
-  // 채널 아이콘
+  const comment = useCommentState();
 
   return (
     <Main>
       <Header />
 
       <div className="contents">
-        <div className="commentThread">
-          <Comment />
-          {/* <div className="expander">
-            <div className="replies">
-              <img src={downIcon} alt="downIcon" />
-              답글 보기
+        {Array.from(comment).map(([id, data]) => {
+          return (
+            <div className="commentThread" key={id}>
+              <Comment data={data} />
             </div>
-            <div className="expanderContents">...</div>
-          </div> */}
-        </div>
+          );
+        })}
       </div>
     </Main>
   );

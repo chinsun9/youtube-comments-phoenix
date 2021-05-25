@@ -4,6 +4,7 @@ import { ReactComponent as LikeIcon } from '../icons/LikeIcon.svg';
 import { ReactComponent as DislikeIcon } from '../icons/DislikeIcon.svg';
 // import { ReactComponent as HeartIcon } from '../icons/HeartIcon.svg';
 import IconButton from './IconButton';
+import { Comment as CommentType } from '../types';
 
 const Main = styled.div`
   display: flex;
@@ -22,6 +23,7 @@ const Main = styled.div`
     .header {
       color: #030303;
       display: flex;
+      align-items: center;
 
       h3 {
         font-size: 13px;
@@ -54,6 +56,7 @@ const Main = styled.div`
       span {
         font-size: 12px;
         letter-spacing: 0.3px;
+        margin-left: 0px;
       }
 
       button.replyButton {
@@ -67,33 +70,47 @@ const Main = styled.div`
   }
 `;
 
-function Comment() {
+type Props = {
+  data: CommentType;
+};
+
+function Comment({ data }: Props) {
+  const {
+    avatar,
+    content,
+    dislikeCount,
+    id,
+    likeCount,
+    publishedTime,
+    username,
+  } = data;
+
   const onLikeHandler = () => {
-    console.log('like');
+    console.log('like', id);
   };
 
   return (
     <Main>
       <div className="authorThumbnail">
-        <img src="https://i.pravatar.cc/48" alt="authorThumbnail" />
+        <img src={avatar} alt="authorThumbnail" />
       </div>
       <div className="main">
         <div className="header">
-          <h3>Username</h3>
+          <h3>{username}</h3>
           &nbsp;
-          <div className="publishedTime">{1}주 전</div>
+          <div className="publishedTime">{publishedTime}</div>
         </div>
-        <div className="content">good good</div>
+        <div className="content">{content}</div>
         <div className="toolbar">
           <IconButton onClick={onLikeHandler}>
             <LikeIcon />
           </IconButton>
 
-          <span>199</span>
+          {likeCount >= dislikeCount ? <span>{likeCount}</span> : null}
           <IconButton onClick={onLikeHandler}>
             <DislikeIcon />
           </IconButton>
-          {/* <span>199</span> */}
+          {/* {likeCount < dislikeCount ? <span>{dislikeCount}</span> : null} */}
           {/* <div className="creator-heart">
             <img src="https://i.pravatar.cc/48" alt="" />
             <HeartIcon />

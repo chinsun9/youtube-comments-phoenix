@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { ReactComponent as MenuIcon } from '../icons/MenuIcon.svg';
+import { useCommentDispatch } from '../context/GlobalContext';
+import { Comment } from '../types';
 
 const Main = styled.div`
   .title {
@@ -132,23 +134,50 @@ const Main = styled.div`
 `;
 
 function Header() {
+  const commentDispatch = useCommentDispatch();
+
   const [isEditable, setIsEditable] = useState(false);
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState<Comment>({
+    id: -1,
+    avatar: 'https://i.pravatar.cc/48',
+    username: 'string',
+    publishedTime: '1주 전',
+    content: '',
+    likeCount: 999,
+    dislikeCount: 0,
+  });
 
   const onCommentChangeHandler = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const { value } = event.target;
-    setComment(value);
+    const { name, value } = event.target;
+    setComment((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
   };
 
   const onCancelHandler = () => {
     setIsEditable(false);
-    setComment('');
+    setComment((prev) => {
+      return {
+        ...prev,
+        content: '',
+      };
+    });
   };
 
   const onFocusHandler = () => {
     setIsEditable(true);
+  };
+
+  const onSubmitHandler = () => {
+    commentDispatch({
+      type: 'ADD_COMMENT',
+      comment,
+    });
   };
 
   return (
@@ -169,10 +198,10 @@ function Header() {
           <div className="creationBox">
             <input
               type="text"
-              name="comment"
+              name="content"
               placeholder="공개 댓글 추가 ..."
               spellCheck="false"
-              value={comment}
+              value={comment.content}
               onFocus={onFocusHandler}
               onChange={onCommentChangeHandler}
             />
@@ -187,7 +216,11 @@ function Header() {
               >
                 취소
               </button>
-              <button type="button" disabled={comment.length === 0}>
+              <button
+                type="button"
+                disabled={comment.content.length === 0}
+                onClick={onSubmitHandler}
+              >
                 댓글
               </button>
             </div>
