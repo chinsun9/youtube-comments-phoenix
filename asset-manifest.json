@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/youtube-comments-phoenix/static/css/main.970eb73e.chunk.css",
+    "main.js": "/youtube-comments-phoenix/static/js/main.75c199e6.chunk.js",
+    "main.js.map": "/youtube-comments-phoenix/static/js/main.75c199e6.chunk.js.map",
+    "runtime-main.js": "/youtube-comments-phoenix/static/js/runtime-main.df3ebbd3.js",
+    "runtime-main.js.map": "/youtube-comments-phoenix/static/js/runtime-main.df3ebbd3.js.map",
+    "static/js/2.73f55ba7.chunk.js": "/youtube-comments-phoenix/static/js/2.73f55ba7.chunk.js",
+    "static/js/2.73f55ba7.chunk.js.map": "/youtube-comments-phoenix/static/js/2.73f55ba7.chunk.js.map",
+    "static/js/3.61b25bc8.chunk.js": "/youtube-comments-phoenix/static/js/3.61b25bc8.chunk.js",
+    "static/js/3.61b25bc8.chunk.js.map": "/youtube-comments-phoenix/static/js/3.61b25bc8.chunk.js.map",
+    "index.html": "/youtube-comments-phoenix/index.html",
+    "static/css/main.970eb73e.chunk.css.map": "/youtube-comments-phoenix/static/css/main.970eb73e.chunk.css.map",
+    "static/js/2.73f55ba7.chunk.js.LICENSE.txt": "/youtube-comments-phoenix/static/js/2.73f55ba7.chunk.js.LICENSE.txt",
+    "static/media/DislikeIcon.463a90af.svg": "/youtube-comments-phoenix/static/media/DislikeIcon.463a90af.svg",
+    "static/media/LikeIcon.9599c71a.svg": "/youtube-comments-phoenix/static/media/LikeIcon.9599c71a.svg",
+    "static/media/MenuIcon.3747475d.svg": "/youtube-comments-phoenix/static/media/MenuIcon.3747475d.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.df3ebbd3.js",
+    "static/js/2.73f55ba7.chunk.js",
+    "static/css/main.970eb73e.chunk.css",
+    "static/js/main.75c199e6.chunk.js"
+  ]
+}
